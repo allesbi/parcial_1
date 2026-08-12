@@ -71,3 +71,4 @@ public class Main {
                     System.out.println("Personas que comieron: " + Comieron + "\nPersonas que se quedaron sin comer: " + noComieron);
             }
     }
+
