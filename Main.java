@@ -30,39 +30,44 @@ public class Main {
         Raciones.add(1);
         Raciones.add(1);
 
-        int Comieron = 0;
-        int i = 0;
-        int s = 0;
 
+        SistemaRefugiados(refugiados,Raciones);
 
-
-        while (!refugiados.isEmpty() && !Raciones.isEmpty()) {
-
-            if (refugiados.element() == Raciones.peek()) {
-                refugiados.remove();
-                Raciones.pop();
-                Comieron++;
-                i--;
-                s++;
-
-            } else {
-                refugiados.offer(refugiados.element());
-                refugiados.poll();
-                i++;
             }
 
-            if (i >= refugiados.size()-s){
-                System.out.printf("Ya no queda raciones que le gusten a los refugiados\n");
-                break;
+            public static void SistemaRefugiados(Queue refugiados, Stack Raciones) {
+
+
+                int Comieron = 0;
+                int i = 0;
+                int s = 0;
+
+
+                while (!refugiados.isEmpty() && !Raciones.isEmpty()) {
+
+                    if (refugiados.element() == Raciones.peek()) {
+                        refugiados.remove();
+                        Raciones.pop();
+                        Comieron++;
+                        i--;
+                        s++;
+
+                    } else {
+                        refugiados.offer(refugiados.element());
+                        refugiados.poll();
+                        i++;
+                    }
+
+                    if (i >= refugiados.size() - s) {
+                        System.out.printf("Ya no queda raciones que le gusten a los refugiados\n");
+                        break;
+                    }
+
+                    System.out.println("Personas esperando su turno: " + refugiados);
+                    System.out.println("Raciones aun disponibles " + Raciones);
+
+                }
+                    int noComieron = refugiados.size();
+                    System.out.println("Personas que comieron: " + Comieron + "\nPersonas que se quedaron sin comer: " + noComieron);
             }
-
-            System.out.println("Personas esperando su turno: " + refugiados);
-            System.out.println("Raciones aun disponibles " + Raciones);
-
-        }
-         int noComieron = refugiados.size();
-        System.out.println("Personas que comieron: " + Comieron + "\nPersonas que se quedaron sin comer: " + noComieron);
-
-
     }
-}
